@@ -65,6 +65,7 @@ Prazo para **envio** do e-mail com **link do repositório:** 09/04/2024  (terça
 - [**Patrick Sampaio**](https://github.com/PatrickSampa)
 
 ### Trello:
+[Trello](https://trello.com/invite/b/Je4JEUey/ATTI918cd14197eb633febcad331e5dce02e59691D70/projeto-compacine)
 
 ### Descrição:
 
