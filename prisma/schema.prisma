@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Filme {
+  id          Int       @id @default(autoincrement())
+  nome        String
+  descricao   String
+  imagemUrl   String
+  genero      String
+  atores      String
+  sessoes     Sessao[]
+
+  @@map("filmes")
+}
+
+model Sala {
+  id          Int       @id @default(autoincrement())
+  nome        String
+  capacidade  Int
+  sessoes     Sessao[]
+
+  @@map("salas")
+}
+
+model Sessao {
+  id          Int       @id @default(autoincrement())
+  filmeId     Int
+  salaId      Int
+  horario     DateTime
+  filme       Filme     @relation(fields: [filmeId], references: [id])
+  sala        Sala      @relation(fields: [salaId], references: [id])
+  ingressos   Ingresso[]
+
+  @@unique([salaId, horario])
+
+  @@map("sessoes")
+}
+
+model Ingresso {
+  id           Int     @id @default(autoincrement())
+  sessaoId     Int
+  numeroAssento Int
+  sessao       Sessao  @relation(fields: [sessaoId], references: [id])
+
+  @@unique([sessaoId, numeroAssento])
+
+  @@map("ingressos")
+}
