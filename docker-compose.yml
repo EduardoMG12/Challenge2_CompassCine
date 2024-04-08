@@ -10,6 +10,13 @@ services:
             MONGO_INITDB_ROOT_PASSWORD: ${PASSWORD_DB}
             MONGO_INITDB_DATABASE: CompassCine
         ports:
-            - 27017:27017
-	application:
-		// running docker file
+           - 27017:27017
+    application:
+        build: .
+        container_name: application
+        restart: always
+        ports:
+            - 3000:3000
+        depends_on:
+            - mongodb
+    
