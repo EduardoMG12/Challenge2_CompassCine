@@ -1,4 +1,4 @@
-export interface ICreateTicket{
+export interface ICreateSession{
 	horario:Date
 	filmeId:number
 	salaId:number
