@@ -14,9 +14,14 @@ npm install
 
 ## Como rodar o projeto:
 ```sh
+docker compose up --build -d # roda todos os containers(banco de dados e back-end)
+docker compose up --build -d mongodb # roda apenas o container banco de dados 
+docker compose up --build -d  application # roda apenas o container com o back-end
+```
 
-npm run dev
-
+## Como derrubar todos os containers:
+```sh
+docker kill $(docker ps -q)
 ```
 
 

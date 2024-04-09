@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+    mongodb:
+        image: mongo:latest
+        container_name: mongodb
+        restart: always
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: ${USER_DB}
+            MONGO_INITDB_ROOT_PASSWORD: ${PASSWORD_DB}
+            MONGO_INITDB_DATABASE: CompassCine
+        ports:
+           - 27017:27017
+    application:
+        build: .
+        container_name: application
+        restart: always
+        ports:
+            - 3000:3000
+        depends_on:
+            - mongodb
+    
