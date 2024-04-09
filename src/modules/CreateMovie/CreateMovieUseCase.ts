@@ -10,6 +10,6 @@ export class CreateMovieUseCase{
 	}
 	async execute(filme: ICreatMovieDTO){
 		return await this.movieRepository.save(filme);
-
+		
 	}
 }
