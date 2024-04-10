@@ -8,7 +8,7 @@ generator client {
 }
 
 model Filme {
-  id          String   @id @default(auto()) @map("_id")
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   nome        String
   descricao   String
   imagemUrl   String
@@ -20,7 +20,7 @@ model Filme {
 }
 
 model Sala {
-  id         String   @id @default(auto()) @map("_id")
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
   nome       String
   capacidade Int
   sessoes    Sessao[]
@@ -29,9 +29,9 @@ model Sala {
 }
 
 model Sessao {
-  id           String     @id @default(auto()) @map("_id")
-  filmeId      String
-  salaId       String
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  filmeId      String @db.ObjectId
+  salaId       String @db.ObjectId
   horario      DateTime
   filme        Filme      @relation(fields: [filmeId], references: [id])
   sala         Sala       @relation(fields: [salaId], references: [id])
@@ -43,8 +43,8 @@ model Sessao {
 }
 
 model Ingresso {
-  id            String   @id @default(auto()) @map("_id")
-  sessaoId      String
+  id            String   @id @default(auto()) @map("_id")  @db.ObjectId
+  sessaoId      String @db.ObjectId
   numeroAssento Int
   sessao        Sessao   @relation(fields: [sessaoId], references: [id])
 
