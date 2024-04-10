@@ -6,30 +6,39 @@ import { prismaClient } from '../../database/prismaClient';
 
 export class PostgreeMovieRepository implements IMovieRepository{
 
-	findByName(nome: string): Promise<{ id: number; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }> {
+	findByName(nome: string): Promise<{ id: string; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }> {
 		throw new Error('Method not implemented.');
 	}
-	async findByAll(): Promise<{ id: number; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }[]> {
+	async findByAll(): Promise<{ id: string; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }[]> {
 		try{
-			const movies = (await this.repository()).filme.findMany()
-			return movies
+			const movies = (await this.repository()).filme.findMany();
+			return movies;
 		}
 		catch (error){
-            throw new Error(error as string);
-        }
+			throw new Error(error as string);
+		}
 		
 	}
-	async save(filme: ICreatMovieDTO): Promise<{ id: number; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }> {
+	async save(filme: ICreatMovieDTO): Promise<{ id: string; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }> {
 		return await (await this.repository()).filme.create({
 			data: filme
 		});
  
 	}
-	findById(id: number): Promise<{ id: number; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }> {
-		throw new Error('Method not implemented.');
+	async findById(id: string): Promise<{ id: string; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }> {
+		const movie = await (await this.repository()).filme.findFirst({
+			where:{id:{equals:id}},
+			select:{id:true,nome: true,descricao:true,imagemUrl:true,genero:true,atores: true,},
+		});
+		if (!movie) {
+			throw new Error('ID não encontrado.');
+		}
+		return movie;
 	}
-	delete(id: string): Promise<{ id: number; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }> {
-		throw new Error('Method not implemented.');
+	async delete(id: string): Promise<void> {
+		const filmedeletado = await (await this.repository()).filme.deleteMany({
+			where:{id:{equals:id}}
+		});
 	}
 
 	async repository(): Promise<PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>> {
