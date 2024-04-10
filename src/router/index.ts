@@ -20,11 +20,9 @@ const movieRepository = new PostgreeMovieRepository();
 
 const deleteMovieUseCase = new DeleteMovieUseCase(movieRepository);
 
-// Criar instância do controlador DeleteMovieController passando o caso de uso como argumento
 const deleteMovieController = new DeleteMovieController(deleteMovieUseCase);
 
 router.delete('/movies/:id', (request, response) => {
-    // Chamar método handle da instância deleteMovieController
     return deleteMovieController.handle(request, response);
 });
 
