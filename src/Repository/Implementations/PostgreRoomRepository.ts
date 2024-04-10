@@ -18,13 +18,13 @@ export class PostgreeRoomRepository implements IRoomRepository{
 	async save(sala: ICreateRoom): Promise<Sala> {
 		return await (await this.repository()).sala.create({data: sala});
 	}
-	async findById(id: number): Promise<Sala | null> {
+	async findById(id: string): Promise<Sala | null> {
 		const room = await (await this.repository()).sala.findUnique({where: {id}});
 		if(room) return room;
 		else return null;
 	}
-	async delete(id: number): Promise<Sala> {
-		const room = await (await this.repository()).sala.delete({where: {id: id}});
+	async delete(id: string): Promise<Sala> {
+		const room = await (await this.repository()).sala.delete({where: {id}});
 		return room;
 	}
 	async repository(): Promise<PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>> {
