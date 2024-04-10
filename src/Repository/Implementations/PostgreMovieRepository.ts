@@ -9,8 +9,15 @@ export class PostgreeMovieRepository implements IMovieRepository{
 	findByName(nome: string): Promise<{ id: number; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }> {
 		throw new Error('Method not implemented.');
 	}
-	findByAll(): Promise<{ id: number; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }[]> {
-		throw new Error('Method not implemented.');
+	async findByAll(): Promise<{ id: number; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }[]> {
+		try{
+			const movies = (await this.repository()).filme.findMany()
+			return movies
+		}
+		catch (error){
+            throw new Error(error as string);
+        }
+		
 	}
 	async save(filme: ICreatMovieDTO): Promise<{ id: number; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }> {
 		return await (await this.repository()).filme.create({
