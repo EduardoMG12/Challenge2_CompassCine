@@ -1,21 +1,14 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
+generator client {
+  provider = "prisma-client-js"
+}
 
 model Filme {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
+  id          String   @id @default(auto()) @map("_id")
   nome        String
   descricao   String
   imagemUrl   String
@@ -27,22 +20,22 @@ model Filme {
 }
 
 model Sala {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  nome        String
-  capacidade  Int
-  sessoes     Sessao[]
+  id         String   @id @default(auto()) @map("_id")
+  nome       String
+  capacidade Int
+  sessoes    Sessao[]
 
   @@map("salas")
 }
 
 model Sessao {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  filmeId     String @db.ObjectId
-  salaId      String @db.ObjectId
-  horario     DateTime
-  filme       Filme     @relation(fields: [filmeId], references: [id])
-  sala        Sala      @relation(fields: [salaId], references: [id])
-  ingressos   Ingresso[]
+  id           String     @id @default(auto()) @map("_id")
+  filmeId      String
+  salaId       String
+  horario      DateTime
+  filme        Filme      @relation(fields: [filmeId], references: [id])
+  sala         Sala       @relation(fields: [salaId], references: [id])
+  ingressos    Ingresso[]
 
   @@unique([salaId, horario])
 
@@ -50,10 +43,10 @@ model Sessao {
 }
 
 model Ingresso {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  sessaoId     String @db.ObjectId
+  id            String   @id @default(auto()) @map("_id")
+  sessaoId      String
   numeroAssento Int
-  sessao       Sessao  @relation(fields: [sessaoId], references: [id])
+  sessao        Sessao   @relation(fields: [sessaoId], references: [id])
 
   @@unique([sessaoId, numeroAssento])
 
