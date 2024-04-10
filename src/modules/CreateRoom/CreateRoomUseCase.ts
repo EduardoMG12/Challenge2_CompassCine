@@ -9,7 +9,12 @@ export class CreateRoomUseCase{
 		this.roomRepository = roomRepository;
 	}
 	async execute(room: ICreateRoom){
-		return this.roomRepository.save(room);
+		try{
+			return await this.roomRepository.save(room);
+
+		}catch (error){
+			throw new Error(error as string);
+		}
 
 	}
 }
