@@ -1,4 +1,4 @@
-import { PrismaClient, Prisma } from '@prisma/client';
+import { PrismaClient, Prisma, Sala } from '@prisma/client';
 import { DefaultArgs } from '@prisma/client/runtime/library';
 import { ICreateRoom } from '../../DTO/CreateRoomDTO';
 import { IRoomRepository } from '../IRoomRepository';
@@ -6,22 +6,46 @@ import { prismaClient } from '../../database/prismaClient';
 
 
 export class PostgreeRoomRepository implements IRoomRepository{
-	findByName(nome: string): Promise<{ id: number; nome: string; capacidade: number; }> {
-		throw new Error('Method not implemented.');
+	async findByName(nome: string): Promise<Sala | null> {
+		try{
+			const room = (await this.repository()).sala.findFirst({where: {nome}});
+			if(room) return room;
+			else return null;
+		}
+		catch(error){
+			throw new Error(error as string);
+		}
 	}
-	findByAll(): Promise<{ id: number; nome: string; capacidade: number; }[]> {
-		throw new Error('Method not implemented.');
+	async findByAll(): Promise<Sala[]> {
+		try{
+			const rooms = (await this.repository()).sala.findMany();
+			return rooms;
+		}
+		catch(error){
+			throw new Error(error as string);
+		}
 	}
-	async save(sala: ICreateRoom): Promise<{ id: number; nome: string; capacidade: number; }> {
-		return await (await this.repository()).sala.create({
-			data: sala
-		});
+	async save(sala: ICreateRoom): Promise<Sala> {
+		return await (await this.repository()).sala.create({data: sala});
 	}
-	findById(id: number): Promise<{ id: number; nome: string; capacidade: number; }> {
-		throw new Error('Method not implemented.');
+	async findById(id: number): Promise<Sala | null> {
+		try{
+			const room = (await this.repository()).sala.findUnique({where: {id}});
+			if(room) return room;
+			else return null;
+		}
+		catch (error){
+			throw new Error(error as string);
+		}
 	}
-	delete(id: string): Promise<{ id: number; nome: string; capacidade: number; }> {
-		throw new Error('Method not implemented.');
+	async delete(id: number): Promise<Sala> {
+		try{
+			const room = (await this.repository()).sala.delete({where: {id: id}});
+			return room;
+		}
+		catch (error){
+			throw new Error(error as string);
+		}
 	}
 	async repository(): Promise<PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>> {
 		return await prismaClient;
