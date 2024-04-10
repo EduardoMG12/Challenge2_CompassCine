@@ -1,6 +1,6 @@
 import app  from './config/server';
 
-const PORT = process.env.API_PORT;
+const PORT = process.env.PORT;
 const dbHost = 'localhost';
 
 app.get('/', (req, res) => {
