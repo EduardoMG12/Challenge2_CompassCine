@@ -5,10 +5,10 @@ import { ISessionRepository } from './../ISessionRepository';
 import { prismaClient } from '../../database/prismaClient';
 
 export class PostgresSessionRepository implements ISessionRepository{
-	save(session: ICreateSessionDTO): Promise<{ id: string; filmeId: string; salaId: string; horario: Date; }> {
-		// 	return await (await this.repository()).sessao.create({data:session});
-		throw new Error('Method not implemented.');
-	} // I Don't Know implement this controller
+	async save(session: ICreateSessionDTO): Promise<Sessao> {
+        return await (await this.repository()).sessao.create({data: {horario:session.horario, filmeId:session.filmeId, salaId:session.salaId}});
+    }
+
 	async findByAll(): Promise<{ id: string; filmeId: string; salaId: string; horario: Date; }[]> {
 		const sessions = await (await this.repository()).sessao.findMany();
 		return sessions;
