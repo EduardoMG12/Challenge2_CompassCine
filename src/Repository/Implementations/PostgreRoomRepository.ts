@@ -7,12 +7,17 @@ import { prismaClient } from '../../database/prismaClient';
 
 export class PostgreeRoomRepository implements IRoomRepository{
 	async findByName(nome: string): Promise<Sala | null> {
-		const room = await (await this.repository()).sala.findFirst({where: {nome}});
+		const room =  await(await this.repository()).sala.findFirst({
+			where:{nome:{equals:nome}},
+			select:{id:true,nome: true, capacidade: true, sessoes: true},
+		});
 		if(room) return room;
 		else return null;
 	}
 	async findByAll(): Promise<Sala[]> {
-		const rooms = await (await this.repository()).sala.findMany();
+		const rooms = await (await this.repository()).sala.findMany({
+			select:{id:true,nome: true, capacidade: true, sessoes: true},
+		});
 		return rooms;	
 	}
 	async save(sala: ICreateRoom): Promise<Sala> {
