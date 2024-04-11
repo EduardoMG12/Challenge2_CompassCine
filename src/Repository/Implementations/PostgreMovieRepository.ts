@@ -6,8 +6,15 @@ import { prismaClient } from '../../database/prismaClient';
 
 export class PostgreeMovieRepository implements IMovieRepository{
 
-	findByName(nome: string): Promise<{ id: string; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }> {
-		throw new Error('Method not implemented.');
+	async findByName(nome: string): Promise<{ id: string; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }> {
+		const movieName = await(await this.repository()).filme.findFirst({
+			where:{nome:{equals:nome}},
+			select:{id:true,nome: true,descricao:true,imagemUrl:true,genero:true,atores: true,},
+		});
+		if (!movieName) {
+			throw new Error('ID não encontrado.');
+		}
+		return movieName;
 	}
 	async findByAll(): Promise<{ id: string; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }[]> {
 		try{
