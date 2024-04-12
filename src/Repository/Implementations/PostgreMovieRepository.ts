@@ -1,8 +1,9 @@
-import { PrismaClient, Prisma } from '@prisma/client';
-import { DefaultArgs } from '@prisma/client/runtime/library';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { IMovieRepository } from '../IMovieRepository';
 import { ICreatMovieDTO } from '../../DTO/CreateMovieDTO';
-import { prismaClient } from '../../database/prismaClient';
+import { Movie } from '../../models/movies';
+
 
 export class PostgreeMovieRepository implements IMovieRepository{
 
@@ -16,21 +17,13 @@ export class PostgreeMovieRepository implements IMovieRepository{
 		}
 		return movieName;
 	}
-	async findByAll(): Promise<{ id: string; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }[]> {
-		try{
-			const movies = (await this.repository()).filme.findMany();
-			return movies;
-		}
-		catch (error){
-			throw new Error(error as string);
-		}
+	async findByAll(): Promise<any> {
+		return await (await this.repository()).find();
 		
 	}
-	async save(filme: ICreatMovieDTO): Promise<{ id: string; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }> {
-		return await (await this.repository()).filme.create({
-			data: filme
-		});
- 
+	async save(filme: ICreatMovieDTO): Promise<any> {
+		const objectMovie =  new (await this.repository())(filme);
+		return await objectMovie.save();
 	}
 	async findById(id: string): Promise<{ id: string; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }> {
 		const movie = await (await this.repository()).filme.findFirst({
@@ -48,8 +41,8 @@ export class PostgreeMovieRepository implements IMovieRepository{
 		});
 	}
 
-	async repository(): Promise<PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>> {
-		return await prismaClient;
+	async repository(): Promise<any> {
+		return Movie;
 	}
 
 }
