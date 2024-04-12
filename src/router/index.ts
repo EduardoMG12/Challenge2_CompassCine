@@ -28,7 +28,7 @@ router.get('/allSessions',(req,res) =>{
 	return findAllSessionsController.handle(req,res);
 });
 
-router.delete('/movies/:id', (request, response) => {
+router.delete('/delete/:id', (request, response) => {
 	return deleteMovieController.handle(request, response);
 });
 
