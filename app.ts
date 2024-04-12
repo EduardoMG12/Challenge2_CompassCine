@@ -10,6 +10,6 @@ app.get('/', (req, res) => {
 app.listen(PortUrl, () => console.log(`
 
 🚀🚀 Server running on port ${PortUrl} 🚀🚀🚀
-  🔗 http://${dbHost}:${PortUrl}/
+  🔗 http://localhost:${PortUrl}/
 
 `));
