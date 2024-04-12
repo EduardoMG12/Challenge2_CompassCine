@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { ICreateSessionDTO } from '../DTO/CreateSessionDTO';
 
-export interface ISessionRepository{
+import { ICreateTicket } from '../DTO/CreateTicket';
+
+export interface ITicketRepository{
 	findById(id: string): Promise<any>
 	findByAll(): Promise<any[]>
-	save(session: ICreateSessionDTO): Promise<any>
+	save(ticket: ICreateTicket): Promise<any>
 	delete(id:string): Promise<any>
 	repository(): Promise<any>
 }

@@ -1,8 +1,6 @@
-import { Filme, Ingresso, Sala } from '@prisma/client';
-
 export interface ICreateSessionDTO {
 	horario:Date
-	filme: Filme
-	sala:Sala 
-	ingressos:Ingresso[]
+	filme: string
+	sala:string 
+	ingressos:[]
 }

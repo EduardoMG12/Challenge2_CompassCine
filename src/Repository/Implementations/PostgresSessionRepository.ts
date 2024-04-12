@@ -1,13 +1,13 @@
-import { PrismaClient, Prisma } from '@prisma/client';
-import { DefaultArgs } from '@prisma/client/runtime/library';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { ICreateSessionDTO } from '../../DTO/CreateSessionDTO';
 import { ISessionRepository } from './../ISessionRepository';
-import { prismaClient } from '../../database/prismaClient';
+import { sala }
+
 
 export class PostgresSessionRepository implements ISessionRepository{
-	save(session: ICreateSessionDTO): Promise<{ id: string; filmeId: string; salaId: string; horario: Date; }> {
-		// 	return await (await this.repository()).sessao.create({data:session});
-		throw new Error('Method not implemented.');
+	async save(session: ICreateSessionDTO): Promise<any> {
+		
 	} // I Don't Know implement this controller
 	async findByAll(): Promise<{ id: string; filmeId: string; salaId: string; horario: Date; }[]> {
 		const sessions = await (await this.repository()).sessao.findMany();
@@ -21,7 +21,7 @@ export class PostgresSessionRepository implements ISessionRepository{
 		const session = await (await this.repository()).sessao.delete({where:{id}});
 		return session; 
 	}
-	async repository(): Promise<PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>> {
+	async repository(): Promise<any> {
 		return await prismaClient;
 	}
 }
