@@ -7,10 +7,8 @@ import { Sessao } from '../../models/sessao';
 export class PostgresSessionRepository implements ISessionRepository{
  
 	async save(session: ICreateSessionDTO): Promise<any> {
-        return await (await this.repository()).create({data: {horario:session.horario, filmeId:session.filmeId, salaId:session.salaId}});
-    }
-
-
+		return await (await this.repository()).create({data: {horario:session.horario, filmeId:session.filmeId, salaId:session.salaId}});
+	}
 	async findByAll(): Promise<{ id: string; filmeId: string; salaId: string; horario: Date; }[]> {
 		const sessions = await (await this.repository()).findMany();
 		return sessions;
@@ -25,6 +23,6 @@ export class PostgresSessionRepository implements ISessionRepository{
 	}
 	async repository(): Promise<any> {
 		return Sessao;
-		return Sessao;
+
 	}
 }
