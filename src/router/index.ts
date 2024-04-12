@@ -6,6 +6,7 @@ import { createSessionController } from '../modules/CreateSession';
 import { findAllRoomController } from '../modules/FindAllRooms';
 import { findAllSessionsController } from '../modules/FindAllSessions';
 import { deleteMovieController } from '../modules/DeleteMovie';
+import { deleteSessionsController } from '../modules/DeleteSessions';
 const router = Router();
 
 router.post('/registerMovie', (req, res) => {
@@ -31,5 +32,10 @@ router.get('/allSessions',(req,res) =>{
 router.delete('/delete/:id', (request, response) => {
 	return deleteMovieController.handle(request, response);
 });
+
+router.delete('/delete/sessao/:id', (request, response) => {
+	return deleteSessionsController.handle(request, response);
+});
+
 
 export { router };

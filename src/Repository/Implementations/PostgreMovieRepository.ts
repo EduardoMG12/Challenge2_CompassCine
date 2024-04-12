@@ -34,9 +34,10 @@ export class PostgreeMovieRepository implements IMovieRepository{
 			return null;
 		}
 	}
-	async delete(id: string): Promise<void> {
+	async delete(id: string): Promise<any> {
 		const filmedeletado = await (await this.repository()).findByIdAndDelete(id);
 		return filmedeletado;
+	
 	}
 
 	async repository(): Promise<any> {

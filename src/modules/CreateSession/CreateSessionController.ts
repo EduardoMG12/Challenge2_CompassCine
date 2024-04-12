@@ -5,10 +5,10 @@ import { CreateSessionUseCase } from './CreateSessionUseCase';
 export class CreateSessionController {
 	constructor(private createSessionUseCase: CreateSessionUseCase){}
 	async handle(request: Request, response: Response){
-		const {horario, filme, sala, ingressos } = request.body;
+		const {horario, filmeId, salaId } = request.body;
 
 		try{
-			const newSession = await this.createSessionUseCase.execute({horario, filme, sala, ingressos });
+			const newSession = await this.createSessionUseCase.execute({horario, filmeId, salaId });
 			return response.status(201).json(newSession);
 		}catch(error){
 			return response.status(400).json('Erro ao adicionar um novo filme');

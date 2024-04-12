@@ -6,7 +6,6 @@ export class DeleteMovieUseCase {
 
 	async execute(movieId: string): Promise<any> {
 		const existingMovie = await this.movieRepository.findById(movieId);
-		console.log(existingMovie);
 		if (!existingMovie) {
 			throw new Error('Filme não encontrado');
 		}
