@@ -25,20 +25,18 @@ export class PostgreeMovieRepository implements IMovieRepository{
 		const objectMovie =  new (await this.repository())(filme);
 		return await objectMovie.save();
 	}
-	async findById(id: string): Promise<{ id: string; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }> {
-		const movie = await (await this.repository()).filme.findFirst({
-			where:{id:{equals:id}},
-			select:{id:true,nome: true,descricao:true,imagemUrl:true,genero:true,atores: true,},
-		});
-		if (!movie) {
-			throw new Error('ID não encontrado.');
+	async findById(id: string): Promise<any> {
+		try{
+			const movie = await (await this.repository()).findById(id);
+			return movie;
+			
+		}catch(e){
+			return null;
 		}
-		return movie;
 	}
 	async delete(id: string): Promise<void> {
-		const filmedeletado = await (await this.repository()).filme.deleteMany({
-			where:{id:{equals:id}}
-		});
+		const filmedeletado = await (await this.repository()).findByIdAndDelete(id);
+		return filmedeletado;
 	}
 
 	async repository(): Promise<any> {
