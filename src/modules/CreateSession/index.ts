@@ -6,4 +6,4 @@ import { CreateSessionUseCase } from './CreateSessionUseCase';
 
 export const postgresSessionRepository = new PostgresSessionRepository();
 export const createSessionUseCase = new CreateSessionUseCase(postgresSessionRepository);
-export const createRoomController = new CreateSessionController(createSessionUseCase);
+export const createSessionController = new CreateSessionController(createSessionUseCase);

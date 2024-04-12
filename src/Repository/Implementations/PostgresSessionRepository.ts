@@ -25,5 +25,6 @@ export class PostgresSessionRepository implements ISessionRepository{
 	}
 	async repository(): Promise<any> {
 		return Sessao;
+		return Sessao;
 	}
 }

@@ -5,8 +5,8 @@ import { DeleteMovieController } from '../modules/DeleteMovie/DeleteMovieControl
 import { DeleteMovieUseCase } from '../modules/DeleteMovie/DeleteMovieUseCase';
 import { PostgreeMovieRepository } from '../Repository/Implementations/PostgreMovieRepository';
 import { FindAllMoviesController } from '../modules/FindAllMovies';
-
-
+import { createSessionController } from '../modules/CreateSession';
+import { findAllRoomController } from '../modules/FindAllRooms';
 const router = Router();
 
 router.post('/registerMovie', (req, res) => {
@@ -15,8 +15,14 @@ router.post('/registerMovie', (req, res) => {
 router.get('/allMovies',(req,res) =>{
 	return FindAllMoviesController.handle(req,res);
 });
+router.post('/registerSession',(req,res) =>{
+	return createSessionController.handle(req,res);
+});
 router.post('/registerRoom', (req, res) => {
 	return createRoomController.handle(req, res);
+});
+router.get('/allRooms',(req,res) =>{
+	return findAllRoomController.handle(req,res);
 });
 
 const movieRepository = new PostgreeMovieRepository();
