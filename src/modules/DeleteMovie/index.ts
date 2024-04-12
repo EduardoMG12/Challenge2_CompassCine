@@ -1,9 +1,7 @@
-import { PostgreeMovieRepository } from '../../Repository/Implementations/PostgreMovieRepository'
-import { DeleteMovieController } from './DeleteMovieController'
-import { DeleteMovieUseCase } from './DeleteMovieUseCase'
+import { PostgreeMovieRepository } from '../../Repository/Implementations/PostgreMovieRepository';
+import { DeleteMovieController } from './DeleteMovieController';
+import { DeleteMovieUseCase } from './DeleteMovieUseCase';
 
-const movieRepository = new PostgreeMovieRepository()
-const deleteMovieUseCase = new DeleteMovieUseCase(movieRepository)
-const deleteMovieController = new DeleteMovieController(deleteMovieUseCase)
-
-export { deleteMovieController, deleteMovieUseCase }
+export const movieRepository = new PostgreeMovieRepository();
+export const deleteMovieUseCase = new DeleteMovieUseCase(movieRepository);
+export const deleteMovieController = new DeleteMovieController(deleteMovieUseCase);

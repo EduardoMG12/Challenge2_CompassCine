@@ -1,12 +1,11 @@
 import { Router } from 'express';
 import { createMovieController } from '../modules/CreateMovie';
 import { createRoomController } from '../modules/CreateRoom';
-import { DeleteMovieController } from '../modules/DeleteMovie/DeleteMovieController';
-import { DeleteMovieUseCase } from '../modules/DeleteMovie/DeleteMovieUseCase';
-import { PostgreeMovieRepository } from '../Repository/Implementations/PostgreMovieRepository';
 import { FindAllMoviesController } from '../modules/FindAllMovies';
 import { createSessionController } from '../modules/CreateSession';
 import { findAllRoomController } from '../modules/FindAllRooms';
+import { findAllSessionsController } from '../modules/FindAllSessions';
+import { deleteMovieController } from '../modules/DeleteMovie';
 const router = Router();
 
 router.post('/registerMovie', (req, res) => {
@@ -25,11 +24,9 @@ router.get('/allRooms',(req,res) =>{
 	return findAllRoomController.handle(req,res);
 });
 
-const movieRepository = new PostgreeMovieRepository();
-
-const deleteMovieUseCase = new DeleteMovieUseCase(movieRepository);
-
-const deleteMovieController = new DeleteMovieController(deleteMovieUseCase);
+router.get('/allSessions',(req,res) =>{
+	return findAllSessionsController.handle(req,res);
+});
 
 router.delete('/movies/:id', (request, response) => {
 	return deleteMovieController.handle(request, response);
