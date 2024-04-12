@@ -1,12 +1,13 @@
-import { Filme, PrismaClient } from '@prisma/client';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { ICreatMovieDTO } from '../DTO/CreateMovieDTO';
 
 
 export interface IMovieRepository{
-    findByName(nome: string): Promise<Filme>;
-    findByAll(): Promise<Filme[]>
-    save(filme: ICreatMovieDTO): Promise<Filme>;
-    findById(id: string): Promise<Filme>;
+    findByName(nome: string): Promise<any>;
+    findByAll(): Promise<any>
+    save(filme: ICreatMovieDTO): Promise<any>;
+    findById(id: string): Promise<any>;
     delete(id: string): Promise<void>;
-    repository(): Promise<PrismaClient>
+    repository(): Promise<any>
 }
