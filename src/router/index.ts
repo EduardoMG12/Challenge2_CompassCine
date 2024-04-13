@@ -7,6 +7,7 @@ import { findAllRoomController } from '../modules/FindAllRooms';
 import { findAllSessionsController } from '../modules/FindAllSessions';
 import { deleteMovieController } from '../modules/DeleteMovie';
 import { deleteSessionsController } from '../modules/DeleteSessions';
+import { referenceUpdateFilmeWithSessaoController, referenceUpdateSalaWithSessaoController, referenceUpdateSessaoWithIngressoController } from '../modules/ModuleReference';
 const router = Router();
 
 router.post('/registerMovie', (req, res) => {
@@ -37,5 +38,20 @@ router.delete('/delete/sessao/:id', (request, response) => {
 	return deleteSessionsController.handle(request, response);
 });
 
+
+
+router.post('/updateFilmeComSessao', (req, res) => {
+	return referenceUpdateFilmeWithSessaoController.handle(req, res);
+});
+
+
+router.post('/updateSalaComSessao', (req, res) => {
+	return referenceUpdateSalaWithSessaoController.handle(req, res);
+});
+
+
+router.post('/updateSessaoComIngresso', (req, res) => {
+	return referenceUpdateSessaoWithIngressoController.handle(req, res);
+});
 
 export { router };
