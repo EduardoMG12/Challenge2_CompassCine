@@ -9,6 +9,9 @@ const ingressoSchema = new mongoose.Schema({
 	},
 	numeroAssento: {
 		type: Number,
+	},
+	valorAssento: {
+		type: Number,
 	}
 });
   
