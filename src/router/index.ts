@@ -8,6 +8,7 @@ import { findAllSessionsController } from '../modules/FindAllSessions';
 import { deleteMovieController } from '../modules/DeleteMovie';
 import { deleteSessionsController } from '../modules/DeleteSessions';
 import { referenceUpdateFilmeWithSessaoController, referenceUpdateSalaWithSessaoController, referenceUpdateSessaoWithIngressoController } from '../modules/ModuleReference';
+import { createTicketController } from '../modules/CreateTicket';
 const router = Router();
 
 router.post('/registerMovie', (req, res) => {
@@ -53,5 +54,13 @@ router.post('/updateSalaComSessao', (req, res) => {
 router.post('/updateSessaoComIngresso', (req, res) => {
 	return referenceUpdateSessaoWithIngressoController.handle(req, res);
 });
+
+
+
+
+router.post('/createTicket', (req, res) => {
+	return createTicketController.handle(req, res);
+});
+
 
 export { router };
