@@ -9,12 +9,7 @@ import { IRoomRepository } from '../IRoomRepository';
 
 export class PostgreeRoomRepository implements IRoomRepository{
 	async findByName(nome: string): Promise<any> {
-		const room =  await(await this.repository()).sala.findFirst({
-			where:{nome:{equals:nome}},
-			select:{id:true,nome: true, capacidade: true, sessoes: true},
-		});
-		if(room) return room;
-		else return null;
+		return await (await this.repository()).find({nome:nome});
 	}
 	async findByAll(): Promise<any> {
 		return await (await this.repository()).find();
@@ -24,12 +19,12 @@ export class PostgreeRoomRepository implements IRoomRepository{
 		return await objectMovie.save();
 	}
 	async findById(id: string): Promise<any | null> {
-		const room = await (await this.repository()).sala.findUnique({where: {id}});
+		const room = await (await this.repository()).findById(id);
 		if(room) return room;
 		else return null;
 	}
 	async delete(id: string): Promise<any> {
-		const room = await (await this.repository()).sala.delete({where: {id}});
+		const room = await (await this.repository()).findByIdAndDelete(id);
 		return room;
 	}
 	async repository(): Promise<any> {

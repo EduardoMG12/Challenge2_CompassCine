@@ -7,15 +7,8 @@ import { Movie } from '../../models/movies';
 
 export class PostgreeMovieRepository implements IMovieRepository{
 
-	async findByName(nome: string): Promise<{ id: string; nome: string; descricao: string; imagemUrl: string; genero: string; atores: string; }> {
-		const movieName = await(await this.repository()).filme.findFirst({
-			where:{nome:{equals:nome}},
-			select:{id:true,nome: true,descricao:true,imagemUrl:true,genero:true,atores: true,},
-		});
-		if (!movieName) {
-			throw new Error('ID não encontrado.');
-		}
-		return movieName;
+	async findByName(nome: string): Promise<any> {
+		return await (await this.repository()).find({nome:nome});
 	}
 	async findByAll(): Promise<any> {
 		return await (await this.repository()).find();
