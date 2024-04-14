@@ -6,6 +6,10 @@ import { Movie } from '../../models/movies';
 
 
 export class PostgreeMovieRepository implements IMovieRepository{
+	async update(id: string, updates: ICreatMovieDTO): Promise<any> {
+		const updatedMovie = (await this.repository()).findByIdAndUpdate(id, updates, { new: true });
+		return updatedMovie;
+	}
 
 	async findByName(nome: string): Promise<any> {
 		return await (await this.repository()).find({nome:nome});

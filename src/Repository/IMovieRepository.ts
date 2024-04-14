@@ -9,5 +9,6 @@ export interface IMovieRepository{
     save(filme: ICreatMovieDTO): Promise<typeof Movie | null>;
     findById(id: string): Promise<any>;
     delete(id: string): Promise<void>;
+	update(id: string, updates:ICreatMovieDTO): Promise<any>;
     repository(): Promise<any>
 }

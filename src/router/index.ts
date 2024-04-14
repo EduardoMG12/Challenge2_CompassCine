@@ -17,6 +17,7 @@ import { findByNameRoomController } from '../modules/FindByNameRoom';
 import { findByIdSessionController } from '../modules/FindByIdSession';
 import { findAllTicketController } from '../modules/FindAllTicket';
 import { findByIdTicketController } from '../modules/FindByIdTicket';
+import { updateMovieController } from '../modules/UpdateMovie';
 const router = Router();
 
 router.post('/registerMovie', (req, res) => {
@@ -33,6 +34,9 @@ router.get('/movie/:name', (req,res) =>{
 });
 router.delete('/delete/:id', (request, response) => {
 	return deleteMovieController.handle(request, response);
+});
+router.put('/updateMovie/:id',(req,res)=>{
+	return updateMovieController.handle(req,res);
 });
 
 
