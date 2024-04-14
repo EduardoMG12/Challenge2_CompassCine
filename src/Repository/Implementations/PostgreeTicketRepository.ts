@@ -4,15 +4,16 @@ import { Ingresso } from '../../models/ingresso';
 import { ICreateTicket } from '../../DTO/CreateTicket';
 
 export class PostgreeTicketRepository implements ITicketRepository{
-	async findBySessionId(sessionId: string): Promise<any[]> {
-		const tickets = await (await this.repository()).findMany({sessaoId:sessionId});
+	async findByTicketId(id: string): Promise<any> {
+		const tickets = await (await this.repository()).findById(id);
 		return tickets;
-	} // i don't know certainly if is this right
+	}
 	async findById(id: string): Promise<any> {
-		const ticket = await (await this.repository()).findUnique({where: {id}});
-		return ticket;	}
+		const ticket = await (await this.repository()).findById(id);
+		return ticket;	
+	}
 	async findByAll(): Promise<any[]> {
-		const tickets = await (await this.repository()).findMany();
+		const tickets = await (await this.repository()).find();
 		return tickets;
 
 	}

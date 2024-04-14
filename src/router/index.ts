@@ -14,6 +14,9 @@ import { deleteRoomController } from '../modules/DeleteRoom';
 import { findByIdMovieController } from '../modules/FindByIdMovie';
 import { findByIdRoomController } from '../modules/FindByIdRoom';
 import { findByNameRoomController } from '../modules/FindByNameRoom';
+import { findByIdSessionController } from '../modules/FindByIdSession';
+import { findAllTicketController } from '../modules/FindAllTicket';
+import { findByIdTicketController } from '../modules/FindByIdTicket';
 const router = Router();
 
 router.post('/registerMovie', (req, res) => {
@@ -39,6 +42,9 @@ router.post('/registerSession',(req,res) =>{
 router.get('/allSessions',(req,res) =>{
 	return findAllSessionsController.handle(req,res);
 });
+router.get('/sessionId/:id',(req,res)=>{
+	return findByIdSessionController.handle(req,res);
+});
 router.delete('/delete/sessao/:id', (request, response) => {
 	return deleteSessionsController.handle(request, response);
 });
@@ -63,6 +69,12 @@ router.delete('/deleteRoom/:id',(req,res)=>{
 
 router.post('/createTicket', (req, res) => {
 	return createTicketController.handle(req, res);
+});
+router.get('/findAllTicket',(req,res)=>{
+	return findAllTicketController.handle(req,res);
+});
+router.get('/ticketId/:id',(req,res)=>{
+	return findByIdTicketController.handle(req,res);
 });
 
 

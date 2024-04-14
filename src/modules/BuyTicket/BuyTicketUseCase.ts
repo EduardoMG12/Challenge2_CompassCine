@@ -16,7 +16,7 @@ export class BuyTicketUseCase{
 			if(!session){
 				throw new Error('Sessão não encontrada');
 			}
-			const allTicketsSession = await this.ticketRepository.findBySessionId(room.sessaoId);
+			const allTicketsSession = await this.ticketRepository.findByTicketId(room.sessaoId);
 			if(allTicketsSession.length >= session.capacidade){
 				throw new Error('Sessão lotada');
 			}
