@@ -55,6 +55,7 @@ docker kill $(docker ps -q)
 </details>
 <details>
   <summary style="position:relative;">Sobre o desenvolvimento <img width="20" alt="Descrição da imagem" style="position: absolute; top: 50%; left: 205px; transform: translate(-50%, -50%);"  src="https://www.svgrepo.com/show/295412/development-web-development.svg"></summary>
+
 ## Sobre o desenvolvimento
 
 ### Squad: 
@@ -95,6 +96,10 @@ Vale ressaltar que nem todos os membros da equipe possuíam experiência prévia
 ### Descrição.
 
 O projeto consiste em criar um CRUD completo de um sistema de cinema, Obrigatoriamente utilizando Express, ORM e Docker Compose. O Projeto deve seguir as especificações do [Notion](https://animated-beard-0ba.notion.site/2-Desafio-AWS_FULLSTACK_FEV24-8e410d1f653241cb8553c763d16d305c), com atenção especial ao prazo e os requisitos obrigatorios do projeto.
+
+### Documentação rotas
+
+[documetação simples sobre as rotas]("https://cubic-lamp-674.notion.site/CompassCine-routes-157ab2c4bddf46dcacc2b1c649ca8320")
 
 ### *P.O*
 - **Anthoni Bortolotto Martinelli:** [anthoni.martinelli@compasso.com.br](mailto:anthoni.martinelli@compasso.com.br)
