@@ -1,7 +1,7 @@
 import { CreateRoomController } from './CreateRoomController';
 import { CreateRoomUseCase } from './CreateRoomUseCase';
-import { PostgreeRoomRepository } from '../../Repository/Implementations/RoomRepository';
+import { RoomRepository } from '../../Repository/Implementations/RoomRepository';
 
-export const postgreeRoomRepository = new PostgreeRoomRepository();
-export const createRoomUseCase = new CreateRoomUseCase(postgreeRoomRepository);
+export const roomRepository = new RoomRepository();
+export const createRoomUseCase = new CreateRoomUseCase(roomRepository);
 export const createRoomController = new CreateRoomController(createRoomUseCase);

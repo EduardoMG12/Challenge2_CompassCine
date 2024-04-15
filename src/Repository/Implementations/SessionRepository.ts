@@ -4,7 +4,7 @@ import { ICreateSessionDTO } from '../../DTO/CreateSessionDTO';
 import { ISessionRepository } from '../ISessionRepository';
 import { Sessao } from '../../models/sessao';
 
-export class PostgresSessionRepository implements ISessionRepository{
+export class SessionRepository implements ISessionRepository{
  
 	async save(session: ICreateSessionDTO): Promise<any> {
 		const newSession = new (await this.repository())(session);

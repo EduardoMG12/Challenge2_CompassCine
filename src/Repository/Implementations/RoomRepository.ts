@@ -7,7 +7,7 @@ import { IRoomRepository } from '../IRoomRepository';
 
 
 
-export class PostgreeRoomRepository implements IRoomRepository{
+export class RoomRepository implements IRoomRepository{
 	async findByName(nome: string): Promise<any> {
 		return await (await this.repository()).find({nome:nome});
 	}

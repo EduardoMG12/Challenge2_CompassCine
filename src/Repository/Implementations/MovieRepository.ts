@@ -5,7 +5,7 @@ import { ICreatMovieDTO } from '../../DTO/CreateMovieDTO';
 import { Movie } from '../../models/movies';
 
 
-export class PostgreeMovieRepository implements IMovieRepository{
+export class MovieRepository implements IMovieRepository{
 	async update(id: string, updates: ICreatMovieDTO): Promise<any> {
 		const updatedMovie = (await this.repository()).findByIdAndUpdate(id, updates, { new: true });
 		return updatedMovie;

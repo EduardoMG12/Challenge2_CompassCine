@@ -3,7 +3,7 @@ import { ITicketRepository } from '../ITicketRepository';
 import { Ingresso } from '../../models/ingresso';
 import { ICreateTicketDTO } from '../../DTO/CreateTicketDTO';
 
-export class PostgreeTicketRepository implements ITicketRepository{
+export class TicketRepository implements ITicketRepository{
 	async findByTicketId(id: string): Promise<any> {
 		const tickets = await (await this.repository()).findById(id);
 		return tickets;
