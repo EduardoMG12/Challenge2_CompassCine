@@ -9,40 +9,6 @@
 	},
 	"item": [
 		{
-			"name": "Test router root",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						""
-					]
-				},
-				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
-			},
-			"response": []
-		},
-		{
 			"name": "Post Movie",
 			"event": [
 				{
@@ -64,7 +30,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nome\": \"Piratas do Caribe\",\n    \"descricao\": \"Filme de pirata\",\n    \"imagemUrl\": \"https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcQzERWqwe_8XnpGKDGWQNSCfD32dUHaTv1ehHiBUEDagpTj84n7dRzcVe0bYtDA--d6\",\n    \"genero\": \"Ação\",\n    \"atores\": \"Johnny Depp\"\n}",
+					"raw": "{\n\t\"nome\": \"teste\",\n    \"descricao\": \"Filme de pirata\",\n    \"imagemUrl\": \"https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcQzERWqwe_8XnpGKDGWQNSCfD32dUHaTv1ehHiBUEDagpTj84n7dRzcVe0bYtDA--d6\",\n    \"genero\": \"Ação\",\n    \"atores\": \"Johnny Depp\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -84,6 +50,119 @@
 					]
 				},
 				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete movie",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/register/delete/661991a87aab550c4f0014bb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register",
+						"delete",
+						"661991a87aab550c4f0014bb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find all movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/register/allMovies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register",
+						"allMovies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find name movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/register/movie/Piratas do Caribe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register",
+						"movie",
+						"Piratas do Caribe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find id movie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/register/movieId/66196b867ebe8091d00b68d6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register",
+						"movieId",
+						"66196b867ebe8091d00b68d6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Movie",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"nome\": \"Piratas do caribe VS One piece\",\r\n    \"descricao\": \"Filme de pirata\",\r\n    \"imagemUrl\": \"https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcQzERWqwe_8XnpGKDGWQNSCfD32dUHaTv1ehHiBUEDagpTj84n7dRzcVe0bYtDA--d6\",\r\n    \"genero\": \"Ação\",\r\n    \"atores\": \"Johnny Depp\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/register/updateMovie/66196a3e7ebe8091d00b68d3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register",
+						"updateMovie",
+						"66196a3e7ebe8091d00b68d3"
+					]
+				}
 			},
 			"response": []
 		}

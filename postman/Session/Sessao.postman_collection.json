@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "3cd8cde3-fbba-4f53-99b1-b7e945aa31ae",
+		"name": "Sessao",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21083788",
+		"_collection_link": "https://www.postman.com/material-geoscientist-50962286/workspace/compacine/collection/21083788-3cd8cde3-fbba-4f53-99b1-b7e945aa31ae?action=share&source=collection_link&creator=21083788"
+	},
+	"item": [
+		{
+			"name": "Post Sessao",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"filmeId\": \"66196b867ebe8091d00b68d6\",\r\n    \"salaId\": \"6619740296cdf8c5f753f8aa\",\r\n\t\t\"horario\": \"2024/04/18\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/register/registerSession",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register",
+						"registerSession"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all session",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/register/allSessions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register",
+						"allSessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete session",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/register/delete/sessao/661accc80e201b16cde89f06",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register",
+						"delete",
+						"sessao",
+						"661accc80e201b16cde89f06"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find id session",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/register/sessionId/661b2a97bde169503418aee2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register",
+						"sessionId",
+						"661b2a97bde169503418aee2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
