@@ -5,6 +5,11 @@ import { ISessionRepository } from './../ISessionRepository';
 import { Sessao } from '../../models/sessao';
 
 export class PostgresSessionRepository implements ISessionRepository{
+	async updateTickets(id: string, idTicket: string): Promise<any> {
+		const sessiom = await (await this.repository()).findById(id);
+		sessiom.ingressos.push(idTicket);
+		return await sessiom.save();
+	}
  
 	async save(session: ICreateSessionDTO): Promise<any> {
 		try{

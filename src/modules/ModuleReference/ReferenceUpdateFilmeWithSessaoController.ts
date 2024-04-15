@@ -8,10 +8,10 @@ export class ReferenceUpdateFilmeWithSessaoController{
 	constructor(private referenceUseCase: ReferenceUseCase) {}
 
 	async handle(request: Request, response: Response): Promise<Response> {
-		const { idFilme,idSala } = request.body;
+		const { idFilme,idsessao } = request.body;
     
 		try {
-			const SessionDelete = await this.referenceUseCase.executeUpdateFilmeWithSessao(idFilme, idSala); 
+			const SessionDelete = await this.referenceUseCase.executeUpdateFilmeWithSessao(idFilme, idsessao); 
 			return response.status(200).send(SessionDelete);
 		} catch (error) {
 			console.log(error);

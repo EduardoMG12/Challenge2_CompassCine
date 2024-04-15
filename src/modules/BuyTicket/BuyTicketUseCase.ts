@@ -27,10 +27,9 @@ export class BuyTicketUseCase{
 			console.log(salaID);
 
 			if(session.ingressos.length == salaID.capacidade) throw new Error('Sessão esgotada');
-
+			
 			for(let i = 0; i< session.ingressos; i++){
 				const idIngresso = await this.ticketRepository.findById(session.ingressos[i]);
-				console.log('Dsdsad');
 				console.log(idIngresso.numeroAssento);
 				console.log(ticket.numeroAssento);
 				console.log('Dsdsad');
@@ -43,7 +42,8 @@ export class BuyTicketUseCase{
 			
 
 			const ticketSave =  await this.ticketRepository.save(ticket);
-			//terminar o update na sessao dfos ingressos
+			 await this.sessionRepository.updateTickets(session.id,ticketSave.id)
+			 return ticketSave
 
 		}catch (error){
 			throw new Error(error as string);

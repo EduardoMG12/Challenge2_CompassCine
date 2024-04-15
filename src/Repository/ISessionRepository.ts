@@ -7,5 +7,6 @@ export interface ISessionRepository{
 	findByAll(): Promise<any[]>
 	save(session: ICreateSessionDTO): Promise<any>
 	delete(id:string): Promise<any>
+	updateTickets(id: string, idTicket: string): Promise<any>
 	repository(): Promise<any>
 }
