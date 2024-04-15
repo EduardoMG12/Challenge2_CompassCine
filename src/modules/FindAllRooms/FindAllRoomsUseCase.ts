@@ -29,7 +29,6 @@ export class FindAllRoomsUseCase{
 		for (let i = 0; i < rooms.length; i++) {
 			console.log(rooms[i].sessoes.length);
 			for (let h = 0; h < rooms[i].sessoes.length; h++) {
-				console.log('passou');
 				for (let j = 0; j < rooms[i].sessoes[h].ingressos.length; j++) {
 					const Ingressoss = await this.ticketsRepository.findById(rooms[i].sessoes[h].ingressos[j]);
 					if(Ingressoss){

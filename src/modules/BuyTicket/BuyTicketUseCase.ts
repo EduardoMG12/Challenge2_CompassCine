@@ -23,19 +23,15 @@ export class BuyTicketUseCase{
 			if(!session){
 				throw new Error('Sessão não encontrada');
 			}
-			console.log(session);
+
 			const salaID = await this.roomRepository.findById(session.salaId);
 			if(!salaID) throw new Error('Sessão não encontrada');
 
-			console.log(salaID);
 
 			if(session.ingressos.length == salaID.capacidade) throw new Error('Sessão esgotada');
 			
 			for(let i = 0; i< session.ingressos; i++){
 				const idIngresso = await this.ticketRepository.findById(session.ingressos[i]);
-				console.log(idIngresso.numeroAssento);
-				console.log(ticket.numeroAssento);
-				console.log('Dsdsad');
 				if(idIngresso.numeroAssento == ticket.numeroAssento){
 					return new Error('Cadeira ja esta ocupada');
 				}

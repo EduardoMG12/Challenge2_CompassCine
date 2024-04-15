@@ -6,7 +6,7 @@ export function placeGenerator(capacidade: number): Array<string>{
 	let count = 0; 
 	let contadorLetras = 0;
     
-	const inicio = 1;  // Inicia com 1 para a letra 'A'
+	const inicio = 1;  
 
 
 	for(let i=0; i<capacidade;i++){
