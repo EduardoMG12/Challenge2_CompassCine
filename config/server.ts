@@ -3,9 +3,11 @@ import bodyParser from 'body-parser';
 import { join } from 'path';
 import * as dotenv from 'dotenv';
 import cors from 'cors';
-import { router } from '../src/router';
 import { mongoosee } from '../src/database/mongoose';
-import { routerFind } from '../src/router/find';
+import routerRegister from '../src/router/register';
+import routerFind from '../src/router/find';
+import routerDelete  from '../src/router/delete';
+import routerUpdate from '../src/router/update';
 
 const app = express();
 app.use(cors());
@@ -17,8 +19,11 @@ app.use(express.json());
 mongoosee();
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use('/register',router);
+
+app.use('/register',routerRegister);
 app.use('/find',routerFind);
+app.use('/delete', routerDelete);
+app.use('/update', routerUpdate);
 
 
 dotenv.config();
