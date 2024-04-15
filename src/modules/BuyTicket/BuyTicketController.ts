@@ -4,7 +4,7 @@ import { ICreateTicket } from '../../DTO/CreateTicket';
 
 
 
-export class buyTicketController {
+export class BuyTicketController {
 	constructor(private buyTicketUseCase: BuyTicketUseCase){}
 	async handle(request: Request, response: Response){
 		const data:ICreateTicket  = request.body;
