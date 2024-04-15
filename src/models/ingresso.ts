@@ -8,7 +8,7 @@ const ingressoSchema = new mongoose.Schema({
 		ref: 'Sessao',
 	},
 	numeroAssento: {
-		type: Number,
+		type: String,
 	},
 	valorAssento: {
 		type: Number,

@@ -18,6 +18,8 @@ export class PostgreeTicketRepository implements ITicketRepository{
 
 	}
 	async save(ticket: ICreateTicket): Promise<any> {
+		console.log('cheogu aquii');
+		console.log(ticket);
 		const objectMovie =  await (await this.repository())(ticket);
 		return await objectMovie.save();
 	}

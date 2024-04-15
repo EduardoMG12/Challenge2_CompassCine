@@ -18,6 +18,7 @@ import { findByIdSessionController } from '../modules/FindByIdSession';
 import { findAllTicketController } from '../modules/FindAllTicket';
 import { findByIdTicketController } from '../modules/FindByIdTicket';
 import { updateMovieController } from '../modules/UpdateMovie';
+import { buyTicketController, buyTicketUseCase } from '../modules/BuyTicket';
 const router = Router();
 
 router.post('/registerMovie', (req, res) => {
@@ -72,7 +73,7 @@ router.delete('/deleteRoom/:id',(req,res)=>{
 
 
 router.post('/createTicket', (req, res) => {
-	return createTicketController.handle(req, res);
+	return buyTicketController.handle(req, res);
 });
 router.get('/findAllTicket',(req,res)=>{
 	return findAllTicketController.handle(req,res);
