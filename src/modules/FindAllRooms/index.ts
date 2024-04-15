@@ -1,11 +1,11 @@
-import { PostgreeRoomRepository } from '../../Repository/Implementations/PostgreRoomRepository';
-import { PostgresSessionRepository } from '../../Repository/Implementations/PostgresSessionRepository';
-import { PostgreeTicketRepository } from '../../Repository/Implementations/PostgreeTicketRepository';
+import { RoomRepository } from '../../Repository/Implementations/RoomRepository';
+import { SessionRepository } from '../../Repository/Implementations/SessionRepository';
+import { TicketRepository } from '../../Repository/Implementations/TicketRepository';
 import { FindAllRoomsController } from './FindAllRoomsController';
 import { FindAllRoomsUseCase } from './FindAllRoomsUseCase';
 
-export const postgreeTicketRepository = new PostgreeTicketRepository()
-export const sessaoRepository = new PostgresSessionRepository();
-export const roomRepository = new PostgreeRoomRepository();
-export const findAllRoomUseCase = new FindAllRoomsUseCase(roomRepository,sessaoRepository, postgreeTicketRepository);
+export const ticketRepository = new TicketRepository();
+export const sessaoRepository = new SessionRepository();
+export const roomRepository = new RoomRepository();
+export const findAllRoomUseCase = new FindAllRoomsUseCase(roomRepository,sessaoRepository, ticketRepository);
 export const findAllRoomController = new FindAllRoomsController(findAllRoomUseCase);

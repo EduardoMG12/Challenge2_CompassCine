@@ -4,7 +4,7 @@ import { Movie } from '../../models/movies';
 import { Sala } from '../../models/sala';
 import { Sessao } from '../../models/sessao';
 
-export class PostgreeReferenceRepository implements updatesModels{
+export class ReferenceRepository implements updatesModels{
 	async  updateFilmeWithSessao(filmeId: string, sessaoId: any): Promise<any> {
 		const filme = await Movie.findById(filmeId);
 		if(!filme) return null;

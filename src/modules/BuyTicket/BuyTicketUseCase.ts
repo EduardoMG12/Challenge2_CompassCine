@@ -1,4 +1,4 @@
-import { ICreateTicket } from '../../DTO/CreateTicket';
+import { ICreateTicketDTO } from '../../DTO/CreateTicketDTO';
 import { IRoomRepository } from '../../Repository/IRoomRepository';
 import { ISessionRepository } from '../../Repository/ISessionRepository';
 import { ITicketRepository } from '../../Repository/ITicketRepository';
@@ -13,7 +13,7 @@ export class BuyTicketUseCase{
 		this.sessionRepository = sessionRepository;
 		this.roomRepository = roomRepository;
 	}
-	async execute(ticket: ICreateTicket){
+	async execute(ticket: ICreateTicketDTO){
 		try{
 			
 			const session = await this.sessionRepository.findById(ticket.sessaoId);
@@ -42,12 +42,12 @@ export class BuyTicketUseCase{
 			
 
 			const ticketSave =  await this.ticketRepository.save(ticket);
-			 await this.sessionRepository.updateTickets(session.id,ticketSave.id)
-			 return ticketSave
+			await this.sessionRepository.updateTickets(session.id,ticketSave.id);
+			return ticketSave;
 
 		}catch (error){
 			throw new Error(error as string);
 		}
 
 	}
-}// method incomplete
+}

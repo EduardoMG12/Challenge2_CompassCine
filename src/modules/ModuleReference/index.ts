@@ -2,11 +2,11 @@ import { ReferenceUpdateFilmeWithSessaoController } from './ReferenceUpdateFilme
 import { ReferenceUpdateSalaWithSessaoController } from './ReferenceUpdateSalaWithSessaoController';
 import { ReferenceUpdateSessaoWithIngressoController } from './ReferenceUpdateSessaoWithIngressoController';
 import { ReferenceUseCase } from './ReferenceUseCase';
-import { PostgreeReferenceRepository } from '../../Repository/Implementations/PostgreeReferencesRepository';
+import { ReferenceRepository } from '../../Repository/Implementations/ReferencesRepository';
 
 
-export const postgreeReferenceRepository = new PostgreeReferenceRepository();
-export const referenceUseCase = new ReferenceUseCase(postgreeReferenceRepository);
+export const referenceRepository = new ReferenceRepository();
+export const referenceUseCase = new ReferenceUseCase(referenceRepository);
 export const referenceUpdateFilmeWithSessaoController = new ReferenceUpdateFilmeWithSessaoController(referenceUseCase);
 export const referenceUpdateSalaWithSessaoController = new ReferenceUpdateSalaWithSessaoController(referenceUseCase);
 export const referenceUpdateSessaoWithIngressoController = new ReferenceUpdateSessaoWithIngressoController(referenceUseCase);

@@ -19,5 +19,4 @@ const salaSchema = new mongoose.Schema({
 	}]
 });
   
-
 export const Sala = model('MovSalaie', salaSchema);

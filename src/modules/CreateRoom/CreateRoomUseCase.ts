@@ -1,15 +1,13 @@
-import { ICreateRoom } from '../../DTO/CreateRoomDTO';
+import { ICreateRoomDTO } from '../../DTO/CreateRoomDTO';
 import { IRoomRepository } from '../../Repository/IRoomRepository';
 import { placeGenerator } from '../../help/placeGenerator';
-
-
 
 export class CreateRoomUseCase{
 	private roomRepository: IRoomRepository;
 	constructor(roomRepository: IRoomRepository){
 		this.roomRepository = roomRepository;
 	}
-	async execute(room: ICreateRoom){
+	async execute(room: ICreateRoomDTO){
 		try{
 			const lugaresSala = (placeGenerator(room.capacidade));
 			room.lugares = lugaresSala;

@@ -1,8 +1,7 @@
 import { CreateTicketController } from './CreateTicketController';
 import { CreateTicketUseCase } from './CreateTicketUseCase';
-import { PostgreeTicketRepository } from '../../Repository/Implementations/PostgreeTicketRepository';
+import { TicketRepository } from '../../Repository/Implementations/TicketRepository';
 
-
-export const postgreeTicketRepository = new PostgreeTicketRepository();
-export const createTicketUseCase = new CreateTicketUseCase(postgreeTicketRepository);
+export const ticketRepository = new TicketRepository();
+export const createTicketUseCase = new CreateTicketUseCase(ticketRepository);
 export const createTicketController = new CreateTicketController(createTicketUseCase);

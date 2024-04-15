@@ -4,6 +4,7 @@ import { FindByNameRoomUseCase } from './FindByNameRoomUseCase';
 export class FindByNameRoomController{
 	constructor(private findByNameRoomController: FindByNameRoomUseCase){}
 	async handle(req:Request,res:Response){
+		
 		try {
 			const room = await this.findByNameRoomController.execute(req.params.nome);
 			res.status(200).send(room);

@@ -3,7 +3,6 @@ import { findAllMovieUseCase } from './FindAllMoviesUseCase';
 
 export class findAllMovieController{
 	constructor(private findAllMovieUseCase: findAllMovieUseCase){
-
 	}
 	async handle(request:Request,response: Response){
 		try {

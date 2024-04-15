@@ -4,6 +4,7 @@ import { FindByIdMovieUsecase } from './FindByIdMovieUseCase';
 export class FindByIdMovieController{
 	constructor(private FindByIdUseCase: FindByIdMovieUsecase){}
 	async handle(req:Request,res:Response){
+		
 		try {
 			const movie = await this.FindByIdUseCase.execute(req.params.id);
 			res.status(200).send(movie);

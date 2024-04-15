@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ITicketRepository } from '../ITicketRepository';
 import { Ingresso } from '../../models/ingresso';
-import { ICreateTicket } from '../../DTO/CreateTicket';
+import { ICreateTicketDTO } from '../../DTO/CreateTicketDTO';
 
-export class PostgreeTicketRepository implements ITicketRepository{
+export class TicketRepository implements ITicketRepository{
 	async findByTicketId(id: string): Promise<any> {
 		const tickets = await (await this.repository()).findById(id);
 		return tickets;
@@ -17,7 +17,9 @@ export class PostgreeTicketRepository implements ITicketRepository{
 		return tickets;
 
 	}
-	async save(ticket: ICreateTicket): Promise<any> {
+
+	async save(ticket: ICreateTicketDTO): Promise<any> {
+
 		console.log('cheogu aquii');
 		console.log(ticket);
 		const objectMovie =  await (await this.repository())(ticket);

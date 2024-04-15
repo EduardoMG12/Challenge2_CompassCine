@@ -1,4 +1,4 @@
-import { ICreateTicket } from '../../DTO/CreateTicket';
+import { ICreateTicketDTO } from '../../DTO/CreateTicketDTO';
 import { ITicketRepository } from '../../Repository/ITicketRepository';
 
 export class CreateTicketUseCase{
@@ -6,7 +6,7 @@ export class CreateTicketUseCase{
 	constructor(ticketRepository: ITicketRepository){
 		this.ticketRepository = ticketRepository;
 	}
-	async execute(ticket: ICreateTicket){
+	async execute(ticket: ICreateTicketDTO){
 		return await this.ticketRepository.save(ticket);
 	}
 }

@@ -9,19 +9,17 @@ export class findAllMovieUseCase{
 		this.sessaoReposytory = sessaoRepository;
 	}
 	async execute(){
-		const moveis =  await this.movieRepository.findByAll();
-		let novoArrayObjeto = [];
-		for (let i = 0;  i < moveis.length; i++){
-			for (let h = 0; h < moveis[i].sessoes.length; h++){
-				const idSessao = (moveis[i].sessoes[h].toString());
-				const sess = (await this.sessaoReposytory.findById(idSessao));
-				novoArrayObjeto.push(sess);
+		const movies =  await this.movieRepository.findByAll();
+		const newArrayObject = [];
+		for (let i = 0;  i < movies.length; i++){
+			for (let h = 0; h < movies[i].sessoes.length; h++){
+				const sessionId = (movies[i].sessoes[h].toString());
+				const session = (await this.sessaoReposytory.findById(sessionId));
+				newArrayObject.push(session);
 			}
-			moveis[i].sessoes = novoArrayObjeto;
-			novoArrayObjeto = [];
-		}
+			movies[i].sessoes = newArrayObject;
 		
-
-		return moveis;
+		}
+		return movies;
 	}
 }

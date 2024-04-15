@@ -1,11 +1,11 @@
 import { BuyTicketUseCase } from './BuyTicketUseCase';
 import { BuyTicketController } from './BuyTicketController';
-import { PostgreeTicketRepository } from '../../Repository/Implementations/PostgreeTicketRepository';
-import { PostgresSessionRepository } from '../../Repository/Implementations/PostgresSessionRepository';
-import { PostgreeRoomRepository } from '../../Repository/Implementations/PostgreRoomRepository';
+import { TicketRepository } from '../../Repository/Implementations/TicketRepository';
+import { SessionRepository } from '../../Repository/Implementations/SessionRepository';
+import { RoomRepository } from '../../Repository/Implementations/RoomRepository';
 
-export const postgreeTicketRepository = new PostgreeTicketRepository();
-export const postgresSessionRepository = new  PostgresSessionRepository();
-export const postgreeRoomRepository = new PostgreeRoomRepository();
-export const buyTicketUseCase = new BuyTicketUseCase(postgreeTicketRepository,postgresSessionRepository,postgreeRoomRepository);
+export const ticketRepository = new TicketRepository();
+export const sessionRepository = new  SessionRepository();
+export const roomRepository = new RoomRepository();
+export const buyTicketUseCase = new BuyTicketUseCase(ticketRepository,sessionRepository,roomRepository);
 export const buyTicketController = new BuyTicketController(buyTicketUseCase);

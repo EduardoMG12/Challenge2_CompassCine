@@ -1,7 +1,5 @@
 import mongoose, { model } from 'mongoose';
 
-
-
 const ingressoSchema = new mongoose.Schema({
 	sessaoId: {
 		type: mongoose.Schema.Types.ObjectId,
