@@ -27,12 +27,14 @@ PASSWORD_DB=123
 
 ## Como rodar o projeto
 ```sh
-# rever comando para rodar projeto
-docker compose up --build -d # roda todos os containers(banco de dados e back-end) 
-docker compose up --build -d mongodb # roda apenas o container banco de dados 
-docker compose up --build -d  application # roda apenas o container com o back-end
+# certifique-se que vocë esta na pasta do projeto
+docker-compose -f ./docker-compose.mongoConfig.yml up --build -d
+npm run dev
 ```
 
+<!-- docker compose up --build -d # roda todos os containers(banco de dados e back-end) 
+docker compose up --build -d mongodb # roda apenas o container banco de dados 
+docker compose up --build -d  application # roda apenas o container com o back-end -->
 ## Como derrubar todos os containers
 ```sh
 docker kill $(docker ps -q)
