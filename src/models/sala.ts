@@ -9,6 +9,10 @@ const salaSchema = new mongoose.Schema({
 		type: Number,
 		required: true
 	},
+	lugares: {
+		type: [],
+		required: true
+	},
 	sessoes: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Sessao'

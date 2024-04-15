@@ -1,5 +1,6 @@
 export interface ICreateTicketDTO {
 	sessaoId: string,
-    numeroAssento: number
+    numeroAssento: number,
+    valorAssento: number
 
 }
