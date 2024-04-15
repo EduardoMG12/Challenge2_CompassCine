@@ -1,16 +1,15 @@
 import app  from './config/server';
 
-const PORT = process.env.PORT;
-const dbHost = process.env.DB_HOST;
+const PortUrl = process.env.API_PORT;
+const dbHost = 'localhost';
 
 app.get('/', (req, res) => {
 	res.send('Hello World, route test project configured!');
 });
 
+app.listen(PortUrl, () => console.log(`
 
-app.listen(PORT, () => console.log(`
-
-🚀🚀 Server running on port ${PORT} 🚀🚀🚀
-  🔗 https://${dbHost}:${PORT}/
+🚀🚀 Server running on port ${PortUrl} 🚀🚀🚀
+  🔗 http://localhost:${PortUrl}/
 
 `));
