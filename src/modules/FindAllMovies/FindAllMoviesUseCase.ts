@@ -18,10 +18,8 @@ export class findAllMovieUseCase{
 				newArrayObject.push(session);
 			}
 			movies[i].sessoes = newArrayObject;
-			
-		}
 		
-
+		}
 		return movies;
 	}
 }
