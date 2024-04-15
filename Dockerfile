@@ -1,10 +1,20 @@
-FROM node:20.9.0-alpine
-EXPOSE 3000:3000
+
+FROM node:18
+
+
 WORKDIR /app
+
+
+COPY package*.json ./
+
+
+RUN npm install
+
+
 COPY . .
 
-COPY package.json .
-RUN npm install
-RUN npx prisma generate
 
-ENTRYPOINT ["npm", "run", "dev"]
+EXPOSE 3000
+
+
+CMD ["npm", "run", "dev"]
