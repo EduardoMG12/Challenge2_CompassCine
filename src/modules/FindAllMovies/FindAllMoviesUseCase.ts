@@ -10,7 +10,7 @@ export class findAllMovieUseCase{
 	}
 	async execute(){
 		const movies =  await this.movieRepository.findByAll();
-		const newArrayObject = [];
+		let newArrayObject = [];
 		for (let i = 0;  i < movies.length; i++){
 			for (let h = 0; h < movies[i].sessoes.length; h++){
 				const sessionId = (movies[i].sessoes[h].toString());
@@ -18,7 +18,7 @@ export class findAllMovieUseCase{
 				newArrayObject.push(session);
 			}
 			movies[i].sessoes = newArrayObject;
-		
+			newArrayObject = []
 		}
 		return movies;
 	}
