@@ -1,5 +1,6 @@
 export interface ICreateTicket {
 	sessaoId: string,
-    numeroAssento: number
+    numeroAssento: number,
+    valorAssento: number
 
 }

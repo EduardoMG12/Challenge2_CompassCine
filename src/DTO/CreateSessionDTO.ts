@@ -1,6 +1,7 @@
 export interface ICreateSessionDTO {
 	filmeId: string
 	salaId: string
-	horario:Date
+	horarioInicio:Date,
+	horaFim: Date
 	
 }

@@ -7,8 +7,14 @@ import { Sessao } from '../../models/sessao';
 export class PostgresSessionRepository implements ISessionRepository{
  
 	async save(session: ICreateSessionDTO): Promise<any> {
-		const newSession = new (await this.repository())(session);
-		return newSession.save();
+		try{
+			
+			const newSession = new (await this.repository())(session);
+			console.log(newSession);
+			return await newSession.save();
+		}catch(e){
+			console.log(e);
+		}
 	}
 	async findByAll(): Promise<{ id: string; filmeId: string; salaId: string; horario: Date; }[]> {
 		const sessions = await (await this.repository()).find();
