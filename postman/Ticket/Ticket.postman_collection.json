@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "6cc1ae2f-1fc1-4f19-8d80-b7247dd3ac0f",
+		"name": "Ticket",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21083788",
+		"_collection_link": "https://www.postman.com/material-geoscientist-50962286/workspace/compacine/collection/21083788-6cc1ae2f-1fc1-4f19-8d80-b7247dd3ac0f?action=share&source=collection_link&creator=21083788"
+	},
+	"item": [
+		{
+			"name": "Post Ticket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sessaoId\":\"661b2a97bde169503418aee2\",\r\n\t\t\"numeroAssento\": 1,\r\n\t\t\"valorAssento\": 5000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/register/createTicket",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register",
+						"createTicket"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find all ticket",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/register/findAllTicket",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register",
+						"findAllTicket"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find By Id Ticket",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/register/ticketId/661b302d25c4f818d1c59bdf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register",
+						"ticketId",
+						"661b302d25c4f818d1c59bdf"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
