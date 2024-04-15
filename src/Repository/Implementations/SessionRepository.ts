@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { ICreateSessionDTO } from '../../DTO/CreateSessionDTO';
-import { ISessionRepository } from './../ISessionRepository';
+import { ISessionRepository } from '../ISessionRepository';
 import { Sessao } from '../../models/sessao';
 
 export class PostgresSessionRepository implements ISessionRepository{

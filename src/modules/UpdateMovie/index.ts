@@ -1,4 +1,4 @@
-import { PostgreeMovieRepository } from '../../Repository/Implementations/PostgreMovieRepository';
+import { PostgreeMovieRepository } from '../../Repository/Implementations/MovieRepository';
 import { UpdateMovieController } from './UpdateMovieController';
 import { UpdateMovieUseCase } from './UpdateMovieUseCase';
 

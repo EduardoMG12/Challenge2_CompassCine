@@ -1,6 +1,5 @@
 import mongoose, { model } from 'mongoose';
 
-
 const sessaoSchema = new mongoose.Schema({
 	filmeId: { type: mongoose.Schema.Types.ObjectId, ref: 'Filme' },
 	salaId: { type: mongoose.Schema.Types.ObjectId, ref: 'Sala' },

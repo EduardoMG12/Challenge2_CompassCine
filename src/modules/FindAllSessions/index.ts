@@ -1,4 +1,4 @@
-import { PostgresSessionRepository } from '../../Repository/Implementations/PostgresSessionRepository';
+import { PostgresSessionRepository } from '../../Repository/Implementations/SessionRepository';
 import { FindAllSessionsController } from './FindAllSessionsController';
 import { FindAllSessionsUseCase } from './FindAllSessionsUseCase';
 

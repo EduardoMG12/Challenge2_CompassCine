@@ -1,7 +1,4 @@
-import mongoose from 'mongoose';
-
-
-const { Schema, model  } = mongoose;
+import mongoose, { model } from 'mongoose';
 
 const movieSchema = new mongoose.Schema({
 	nome: String,
@@ -11,4 +8,5 @@ const movieSchema = new mongoose.Schema({
 	atores: String,
 	sessoes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Sessao' }]
 });
+
 export const Movie = model('Movie', movieSchema);

@@ -1,4 +1,4 @@
-import { PostgreeRoomRepository } from '../../Repository/Implementations/PostgreRoomRepository';
+import { PostgreeRoomRepository } from '../../Repository/Implementations/RoomRepository';
 import { FindByNameRoomController } from './FindByNameRoomController';
 import { FindByNameRoomUseCase } from './FindByNameRoomUseCase';
 

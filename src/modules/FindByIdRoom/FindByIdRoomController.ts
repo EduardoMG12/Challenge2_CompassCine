@@ -4,6 +4,7 @@ import { FindByIdRoomuseCase } from './FindByIdRoomUseCase';
 export class FindByIdRoomController{
 	constructor(private findByIdUseCase: FindByIdRoomuseCase){}
 	async handle(req: Request,res: Response){
+		
 		try {
 			const room = await this.findByIdUseCase.execute(req.params.id);
 			res.status(200).send(room);

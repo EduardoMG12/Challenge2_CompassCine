@@ -1,4 +1,4 @@
-import { PostgreeTicketRepository } from '../../Repository/Implementations/PostgreeTicketRepository';
+import { PostgreeTicketRepository } from '../../Repository/Implementations/TicketRepository';
 import { FindAllTicketController } from './FindAllTicketController';
 import { FindAllTicketUseCase } from './FindAllTicketUseCase';
 

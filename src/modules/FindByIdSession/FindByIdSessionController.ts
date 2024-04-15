@@ -4,6 +4,7 @@ import { FindByIdSessionUsecase } from './FindByIdSessionUseCase';
 export class FindByIdSessionController{
 	constructor(private FindByIdSessionUsecase:FindByIdSessionUsecase){}
 	async handle(req:Request,res:Response){
+		
 		try {
 			const session = await this.FindByIdSessionUsecase.execute(req.params.id);
 			return res.status(200).send(session);

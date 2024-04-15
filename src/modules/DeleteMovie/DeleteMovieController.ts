@@ -8,8 +8,8 @@ export class DeleteMovieController {
 		const { id } = request.params;
     
 		try {
-			const movieDelete = await this.deleteMovieUseCase.execute(id); 
-			return response.status(200).send(movieDelete);
+			const deleteMovie = await this.deleteMovieUseCase.execute(id); 
+			return response.status(200).send(deleteMovie);
 		} catch (error) {
 			console.log(error);
 			return response.status(500).json({ message: 'Erro ao deletar o filme' });

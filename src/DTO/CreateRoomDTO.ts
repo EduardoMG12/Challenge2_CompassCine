@@ -1,4 +1,4 @@
-export interface ICreateRoom{
+export interface ICreateRoomDTO{
     nome: string;
     capacidade: number;
 }
