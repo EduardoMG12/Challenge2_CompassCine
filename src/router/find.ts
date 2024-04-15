@@ -12,32 +12,30 @@ import { findAllRoomController } from '../modules/FindAllRooms';
 
 const router = Router();
 
-// right
 router.get('/allMovies', async (req, res) => {
 	return await FindAllMoviesController.handle(req, res);
 });
-// right 
+ 
 router.get('/allRooms',(req,res) =>{
 	return findAllRoomController.handle(req,res);
 });
-// right
+
 router.get('/allSessions',(req,res) =>{
 	return findAllSessionsController.handle(req,res);
 });
-// right
+
 router.get('/allTicket',(req,res)=>{
 	return findAllTicketController.handle(req,res);
 });
 
-// right
 router.get('/movieId/:id',(req,res)=>{
 	return findByIdMovieController.handle(req,res);
 });
-// right
+
 router.get('/sessionId/:id',(req,res)=>{
 	return findByIdSessionController.handle(req,res);
 });
-// right
+
 router.get('/roomId/:id',(req,res)=>{
 	return findByIdRoomController.handle(req,res);
 });
@@ -46,12 +44,10 @@ router.get('/ticketId/:id',(req,res)=>{
 	return findByIdTicketController.handle(req,res);
 });
 
-// right
 router.get('/movie/:name', (req,res) =>{
 	return FindByNameMovieController.handle(req,res);
 });
 
-// right
 router.get('/roomName/:nome',(req,res)=>{
 	return findByNameRoomController.handle(req,res);
 });

@@ -4,21 +4,18 @@ import { referenceUpdateFilmeWithSessaoController, referenceUpdateSalaWithSessao
 
 const router = Router();
 
-// update route
 router.put('/movie/:id',(req,res)=>{
 	return updateMovieController.handle(req,res);
 });
-// add on router update
+
 router.post('/movieWithSession', (req, res) => {
 	return referenceUpdateFilmeWithSessaoController.handle(req, res);
 });
 
-// add on router update
 router.post('/roomWithSession', (req, res) => {
 	return referenceUpdateSalaWithSessaoController.handle(req, res);
 });
 
-// add on router update
 router.post('/sessionWithTicket', (req, res) => {
 	return referenceUpdateSessaoWithIngressoController.handle(req, res);
 });
